@@ -56,15 +56,29 @@ public class MantenedoraControllerTest {
         mantenedoraValida = new Mantenedora();
         mantenedoraValida.setNome("Mantenedora 1");
         mantenedoraValida.setCodigo("BC1");
-        mantenedoraValida.setNumeroFiscal("12345");
-        mantenedoraValida.setEndereco("Avenida Universitária");
+        mantenedoraValida.setNumeroFiscal("0218427");
+        mantenedoraValida.setBairro("Universitario");
+        mantenedoraValida.setLogradouro("Avenida Universitária");
+        mantenedoraValida.setNumero("144587");
+        mantenedoraValida.setCaixaPostal("745415575");
+        mantenedoraValida.setPais("Brasil");
+        mantenedoraValida.setProvincia("Goias");
+        mantenedoraValida.setMunicipio("Anapolis");
+
 
         this.mantenedoraList.add(mantenedoraValida);
 
         mantenedoraInvalida = new Mantenedora();
         mantenedoraInvalida.setNome(RandomStringUtils.randomAlphabetic(90));
         mantenedoraInvalida.setCodigo(RandomStringUtils.randomAlphabetic(10));
-        mantenedoraInvalida.setEndereco(RandomStringUtils.randomAlphabetic(60));
+        mantenedoraInvalida.setNumeroFiscal(RandomStringUtils.randomAlphabetic(20));
+        mantenedoraInvalida.setBairro(RandomStringUtils.randomAlphabetic(50));
+        mantenedoraInvalida.setLogradouro(RandomStringUtils.randomAlphabetic(90));
+        mantenedoraInvalida.setNumero(RandomStringUtils.randomAlphabetic(10));
+        mantenedoraInvalida.setCaixaPostal(RandomStringUtils.randomAlphabetic(20));
+        mantenedoraInvalida.setPais(RandomStringUtils.randomAlphabetic(30));
+        mantenedoraInvalida.setProvincia(RandomStringUtils.randomAlphabetic(30));
+        mantenedoraInvalida.setProvincia(RandomStringUtils.randomAlphabetic(30));
 
         this.mantenedoraList.add(mantenedoraInvalida);
     }
