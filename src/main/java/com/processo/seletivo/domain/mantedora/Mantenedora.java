@@ -113,10 +113,10 @@ public class Mantenedora implements Serializable{
 //    private Arquivo arquivo;
 
 
-//    @ManyToOne(fetch = FetchType.EAGER,  cascade=CascadeType.ALL)
-//    @JoinColumn(name="id_constituicao")
-//    @Getter
-//    @Setter
-//    private List<Instituicao> lsInstituicao;
+    @ManyToOne(fetch = FetchType.LAZY,  cascade=CascadeType.ALL)
+    @JoinColumn(name="id_instituicao", referencedColumnName = "id")
+    @Getter
+    @Setter
+    private Instituicao instituicao;
 
 }

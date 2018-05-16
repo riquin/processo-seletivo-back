@@ -14,6 +14,8 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Set;
 
+import static javax.persistence.CascadeType.ALL;
+
 @Entity
 @Table(name = "instituicao")
 public class Instituicao implements Serializable {
@@ -98,11 +100,17 @@ public class Instituicao implements Serializable {
     private String municipio;
 
 
-//    @JsonIgnoreProperties
-//    @OneToMany(mappedBy = "instituicao", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-//    private List<Mantenedora> lsMantenedora;
-//
-//    @JsonIgnoreProperties
-//    @OneToMany(mappedBy = "instituicao", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-//    private List<Unidade> lsUnidade;
+    @JsonIgnoreProperties
+    @OneToMany(mappedBy = "instituicao", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @Getter
+    @Setter
+    private List<Mantenedora> mantenedoras;
+
+    @JsonIgnoreProperties
+    @OneToMany(mappedBy = "instituicao", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @Getter
+    @Setter
+    private List<Unidade> unidades;
+
+
 }

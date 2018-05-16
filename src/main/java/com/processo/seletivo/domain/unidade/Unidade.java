@@ -90,11 +90,11 @@ public class Unidade implements Serializable {
     private String municipio;
 
 
-//
-//    @ManyToOne(fetch = FetchType.EAGER,  cascade=CascadeType.ALL)
-//    @JoinColumn(name="id_instituicao")
-//    @Getter
-//    @Setter
-//    private List<Instituicao> lsInstituicao;
+
+    @ManyToOne(fetch = FetchType.LAZY,  cascade=CascadeType.ALL)
+    @JoinColumn(name="id_instituicao", referencedColumnName = "id")
+    @Getter
+    @Setter
+    private Instituicao instituicao;
 
 }
