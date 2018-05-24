@@ -1,18 +1,19 @@
 package com.processo.seletivo.domain.mantedora;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.processo.seletivo.domain.instituicao.Instituicao;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
-import javax.validation.Valid;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.List;
 
 @Entity
 @Table(name = "mantenedora")
+@JsonIgnoreProperties({"instituicoes"})
 public class Mantenedora implements Serializable{
 
     private static final long serialVersionUID = 1L;
@@ -113,10 +114,10 @@ public class Mantenedora implements Serializable{
 //    private Arquivo arquivo;
 
 
-    @ManyToOne(fetch = FetchType.LAZY,  cascade=CascadeType.ALL)
-    @JoinColumn(name="id_instituicao", referencedColumnName = "id")
+
+    @JsonIgnoreProperties
+    @OneToMany(mappedBy = "mantenedora", fetch = FetchType.LAZY)
     @Getter
     @Setter
-    private Instituicao instituicao;
-
+    private List<Instituicao> instituicoes;
 }

@@ -8,16 +8,13 @@ import lombok.Setter;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.List;
-import java.util.Set;
-
-import static javax.persistence.CascadeType.ALL;
 
 @Entity
 @Table(name = "instituicao")
+@JsonIgnoreProperties({"unidades"})
 public class Instituicao implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -49,13 +46,6 @@ public class Instituicao implements Serializable {
     @Getter
     @Setter
     private String numeroFiscal;
-
-//    @NotEmpty
-//    @Size(max = 50)
-//    @Column(name = "endereco")
-//    @Getter
-//    @Setter
-//    private String endereco;
 
     @Size(max = 50)
     @Column(name = "bairro")
@@ -100,14 +90,13 @@ public class Instituicao implements Serializable {
     private String municipio;
 
 
-    @JsonIgnoreProperties
-    @OneToMany(mappedBy = "instituicao", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="id_mantenedora", referencedColumnName = "id")
     @Getter
     @Setter
-    private List<Mantenedora> mantenedoras;
+    private Mantenedora mantenedora;
 
-    @JsonIgnoreProperties
-    @OneToMany(mappedBy = "instituicao", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(fetch = FetchType.LAZY,mappedBy = "instituicao")
     @Getter
     @Setter
     private List<Unidade> unidades;

@@ -23,6 +23,7 @@ public class InstituicaoController extends ResponseAbstractController {
 
     @PostMapping
     public ResponseEntity<?> save(@Validated @RequestBody Instituicao instituicao) {
+
         return jsonResponse(instituicaoService.save(instituicao));
     }
 
