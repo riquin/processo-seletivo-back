@@ -20,7 +20,6 @@ public class InstituicaoService extends AbstractService<Instituicao> {
         }else if(instituicaoRepository.findByIdAndNomeOrCodigo(instituicao.getId(), instituicao.getNome(), instituicao.getCodigo()).isEmpty()){
             return instituicaoRepository.save(instituicao);
         }
-        System.out.println("chegouuuuuu");
         throw new CustomDuplicatedException(ExceptionMessageCode.MENSAGEM_REGISTRO_DUPLICADO);
     }
 }
